@@ -5,9 +5,8 @@ name = "pypi"
 
 [packages]
 pygame = "*"
-scikit-learn = "*"
-tensorflow = "*"
-keras = "*"
+neat-python = "*"
+graphviz = "*"
 
 [dev-packages]
 
