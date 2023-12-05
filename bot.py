@@ -1,13 +1,13 @@
 from random import random
-from ball import Ball
+from box import Box
 import neat
 
 class Bots:
-  def __init__(self, genomes, config, screen, gravity, ball_initial_x, ball_initial_y):
+  def __init__(self, genomes, config, screen, gravity, box_initial_x, box_initial_y):
     self.genomes = genomes
     self.nets = []
     self.bots = []
-    self.left = ball_initial_x
+    self.left = box_initial_x
     self.remaining_bots = len(genomes)
 
     for id, g in genomes:
@@ -15,7 +15,7 @@ class Bots:
       self.nets.append(net)
       g.fitness = 0
 
-      self.bots.append(Bot(screen, gravity, ball_initial_x, ball_initial_y))
+      self.bots.append(Bot(screen, gravity, box_initial_x, box_initial_y))
   
   def update(self, obstacles):
     for i, bot in enumerate(self.bots):
@@ -32,22 +32,22 @@ class Bots:
 
 
 class Bot:
-  def __init__(self, screen, gravity, ball_initial_x, ball_initial_y):
-    self.ball = Ball(screen, gravity, ball_initial_x, ball_initial_y)
+  def __init__(self, screen, gravity, box_initial_x, box_initial_y):
+    self.box = Box(screen, gravity, box_initial_x, box_initial_y)
     self.dead = False
     self.score = 0
 
   def perceive(self, obstacles):
     obstacle_x, obstacle_y = obstacles[0].rect_lower.topleft
-    ball_y = self.ball.rect.top
-    return [obstacle_x, obstacle_y, ball_y]
+    box_y = self.box.rect.top
+    return [obstacle_x, obstacle_y, box_y]
 
   def boost(self):
-      self.ball.boost()
+      self.box.boost()
     
   def update(self):
     self.score += 1 / 10000
-    self.ball.update()
+    self.box.update()
 
   def get_reward(self):
     return self.score

@@ -1,14 +1,15 @@
 from obstacle import Obstacles
+from box import Ball
 from bot import Bots
 import pygame
 
 
 class Generation:
-	def __init__(self, n, genomes, config, speed, screen, screenwidth, screenheight, box_initial_x, box_initial_y, gravity):
+	def __init__(self, n, genomes, config, screen, screenwidth, screenheight, box_initial_x, box_initial_y, gravity):
 		self.screenheight = screenheight
 		self.screen = screen
 		self.bots = Bots(genomes, config, screen, gravity, box_initial_x, box_initial_y)
-		self.obstacles = Obstacles(speed, screen, screenwidth, screenheight)
+		self.obstacles = Obstacles(screen, screenwidth, screenheight)
 		self.upcomingObstacles = self.obstacles.obstacles
 		self.score = 0
 		self.gen = n

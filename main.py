@@ -5,13 +5,13 @@ import neat
 import pickle
 import math
 
-speed_up = 5
+speed_up = 1
 gravity = 0.5 * speed_up**2 
 speed = 5 * speed_up
 screenwidth = 1600
 screenheight = 900
-ball_initial_x = 450
-ball_initial_y = 450
+box_initial_x = 450
+box_initial_y = 450
 background_color = 'lightblue'
 
 pygame.init()
@@ -23,7 +23,7 @@ n = 1
 
 def main(genomes, config):
   global n, speed
-  generation = Generation(n, genomes, config, speed, screen, screenwidth, screenheight, ball_initial_x, ball_initial_y, gravity)
+  generation = Generation(n, genomes, config, speed, screen, screenwidth, screenheight, box_initial_x, box_initial_y, gravity)
 
   while True:
     for event in pygame.event.get():

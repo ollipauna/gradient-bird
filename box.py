@@ -1,7 +1,7 @@
 import pygame
 import math
 
-class Ball(pygame.sprite.Sprite):
+class Box(pygame.sprite.Sprite):
   def __init__(self, screen, gravity, x, y):
     super().__init__()
     self.y_velocity = 0
@@ -23,4 +23,4 @@ class Ball(pygame.sprite.Sprite):
     self.screen.blit(self.image, self.rect)
 
   def boost(self):
-    self.y_velocity = -10 * math.log(self.gravity/0.5 - 1)
+    self.y_velocity = -10 * (math.log(self.gravity/0.5) + 1)
